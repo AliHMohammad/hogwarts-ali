@@ -1,0 +1,19 @@
+package edu.hogwarts;
+
+public class Wand extends TeachingMaterial {
+
+    private double lengthInInches;
+    private String wood;
+    private String core;
+
+    public Wand(String name, boolean onShoppingList, boolean required, boolean provided, String notes, double lengthInInches, String wood, String core) {
+        this.name = name;
+        this.onShoppingList = onShoppingList;
+        this.required = required;
+        this.provided = provided;
+        this.notes = notes;
+        this.lengthInInches = lengthInInches;
+        this.wood = wood;
+        this.core = core;
+    }
+}
