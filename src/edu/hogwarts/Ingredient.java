@@ -15,6 +15,10 @@ public class Ingredient extends TeachingMaterial {
         this.unit = unit;
     }
 
+    public Ingredient(){
+
+    }
+
     public double getAmount() {
         return amount;
     }

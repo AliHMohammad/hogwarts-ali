@@ -17,6 +17,10 @@ public class TextBook extends TeachingMaterial {
         this.publishedYear = publishedYear;
     }
 
+    public TextBook() {
+
+    }
+
     public String getAuthor() {
         return author;
     }

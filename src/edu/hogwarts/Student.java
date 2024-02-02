@@ -13,6 +13,17 @@ public class Student extends Person {
         this.graduated = graduated;
     }
 
+    public Student(String fullName, int enrollmentYear, int graduationYear, boolean graduated) {
+        super(fullName);
+        this.enrollmentYear = enrollmentYear;
+        this.graduationYear = graduationYear;
+        this.graduated = graduated;
+    }
+
+    public Student() {
+        super();
+    }
+
     public int getEnrollmentYear() {
         return enrollmentYear;
     }

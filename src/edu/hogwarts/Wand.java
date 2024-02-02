@@ -17,6 +17,10 @@ public class Wand extends TeachingMaterial {
         this.core = core;
     }
 
+    public Wand() {
+
+    }
+
     public double getLengthInInches() {
         return lengthInInches;
     }

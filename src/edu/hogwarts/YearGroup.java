@@ -1,26 +1,31 @@
 package edu.hogwarts;
 
+import java.time.*;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class YearGroup {
 
     private int schoolYear;
-    private Date beginningOfSchoolYear;
+    private LocalDate beginningOfSchoolYear;
     private ArrayList<Student> students;
 
 
-    public YearGroup(int schoolYear, Date beginningOfSchoolYear) {
+    public YearGroup(int schoolYear, LocalDate beginningOfSchoolYear) {
         this.schoolYear = schoolYear;
         this.beginningOfSchoolYear = beginningOfSchoolYear;
         this.students = new ArrayList<>();
+    }
+
+    public YearGroup() {
+
     }
 
     public ArrayList<Student> getStudents() {
         return students;
     }
 
-    public Date getBeginningOfSchoolYear() {
+    public LocalDate getBeginningOfSchoolYear() {
         return beginningOfSchoolYear;
     }
 
@@ -28,7 +33,7 @@ public class YearGroup {
         return schoolYear;
     }
 
-    public void setBeginningOfSchoolYear(Date beginningOfSchoolYear) {
+    public void setBeginningOfSchoolYear(LocalDate beginningOfSchoolYear) {
         this.beginningOfSchoolYear = beginningOfSchoolYear;
     }
 

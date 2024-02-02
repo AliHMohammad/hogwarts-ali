@@ -1,24 +1,28 @@
 package edu.hogwarts;
 
-import java.util.ArrayList;
+
 
 public class House {
 
     private String name;
     private String founder;
-    private ArrayList<String> colors;
+    private String[] colors;
 
-    public House(String name, String founder, ArrayList<String> colors) {
+    public House(String name, String founder, String[] colors) {
         this.name = name;
         this.founder = founder;
         this.colors = colors;
+    }
+
+    public House() {
+
     }
 
     public String getName() {
         return name;
     }
 
-    public ArrayList<String> getColors() {
+    public String[] getColors() {
         return colors;
     }
 
@@ -26,7 +30,7 @@ public class House {
         return founder;
     }
 
-    public void setColors(ArrayList<String> colors) {
+    public void setColors(String[] colors) {
         this.colors = colors;
     }
 

@@ -9,11 +9,15 @@ public class Course {
     private ArrayList<Student> students;
     private ArrayList<TeachingMaterial> materials;
 
-    public Course(Subject subject, Teacher teacher, ArrayList<Student> students, ArrayList<TeachingMaterial> materials) {
+    public Course(Subject subject, Teacher teacher) {
         this.subject = subject;
         this.teacher = teacher;
-        this.students = students;
-        this.materials = materials;
+        this.students = new ArrayList<>();
+        this.materials = new ArrayList<>();
+    }
+
+    public Course() {
+
     }
 
     public Subject getSubject() {
@@ -46,5 +50,28 @@ public class Course {
 
     public void setMaterials(ArrayList<TeachingMaterial> materials) {
         this.materials = materials;
+    }
+
+
+    public void addStudent(HogwartsStudent student) {
+        this.students.add(student);
+    }
+
+    public void addAllStudents(ArrayList<HogwartsStudent> students) {
+        for (HogwartsStudent student :
+                students) {
+            addStudent(student);
+        }
+    }
+
+    public void addMaterial(TeachingMaterial material) {
+        this.materials.add(material);
+    }
+
+    public void addMaterials(ArrayList<TeachingMaterial> materials) {
+        for (TeachingMaterial material :
+                materials) {
+            addMaterial(material);
+        }
     }
 }

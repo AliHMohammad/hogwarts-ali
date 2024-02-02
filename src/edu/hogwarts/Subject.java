@@ -12,6 +12,10 @@ public class Subject {
         this.elective = elective;
     }
 
+    public Subject() {
+
+    }
+
     public String getName() {
         return name;
     }

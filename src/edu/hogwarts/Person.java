@@ -12,6 +12,14 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public Person(String fullName) {
+        setFullName(fullName);
+    }
+
+    public Person() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -34,5 +42,27 @@ public class Person {
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
+    }
+
+    public String getFullName() {
+        return hasMiddleName() ? this.firstName + " " + this.middleName + " " + this.lastName : this.firstName + " " + this.lastName;
+    }
+
+    public void setFullName(String fullName) {
+        int firstGap = fullName.indexOf(" ");
+        int lastGap = fullName.lastIndexOf(" ");
+
+        this.firstName = fullName.substring(0, firstGap);
+        this.lastName = fullName.substring(lastGap+1);
+        this.middleName = firstGap == lastGap ? null : fullName.substring(firstGap+1, lastGap);
+    }
+
+    public boolean hasMiddleName() {
+        return this.middleName != null;
+    }
+
+    @Override
+    public String toString() {
+        return getFullName();
     }
 }
