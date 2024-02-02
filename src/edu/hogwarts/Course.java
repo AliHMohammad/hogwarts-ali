@@ -74,4 +74,11 @@ public class Course {
             addMaterial(material);
         }
     }
+
+    public void addMaterials(TeachingMaterial... materials) {
+        for (TeachingMaterial material :
+                materials) {
+            addMaterial(material);
+        }
+    }
 }

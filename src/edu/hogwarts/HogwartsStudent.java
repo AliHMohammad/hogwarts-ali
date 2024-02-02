@@ -8,7 +8,8 @@ public class HogwartsStudent extends Student implements HogwartsPerson {
     private boolean prefect;
     private ArrayList<String> teams;
 
-    public HogwartsStudent(String firstName, String middleName, String lastName, int enrollmentYear, int graduationYear, boolean graduated, House house, boolean prefect) {
+    public HogwartsStudent(String firstName, String middleName, String lastName, int enrollmentYear, int graduationYear, boolean graduated, House house,
+                           boolean prefect) {
         super(firstName, middleName, lastName, enrollmentYear, graduationYear, graduated);
         this.house = house;
         this.prefect = prefect;

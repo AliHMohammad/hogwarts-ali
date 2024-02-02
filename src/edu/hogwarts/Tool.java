@@ -13,6 +13,10 @@ public class Tool extends TeachingMaterial {
         this.description = description;
     }
 
+    public Tool(String name) {
+        this(name, false, true, false, null, null);
+    }
+
     public Tool() {
 
     }

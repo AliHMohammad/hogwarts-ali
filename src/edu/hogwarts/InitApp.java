@@ -17,6 +17,9 @@ public class InitApp {
         Course kursus = new Course(potionsFag, hTeacher);
         kursus.addAllStudents(students);
         TextBook bog = new TextBook("Advanced Potion-Making", false, true, true, null, "Libatius Borage", "Merge Books", 1946);
+        Tool solvKniv = new Tool("Silver Knife");
+        kursus.addMaterials(bog, solvKniv);
+
     }
 
     private ArrayList<House> createHouses() {
