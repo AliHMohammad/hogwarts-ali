@@ -28,7 +28,7 @@ public class Hogwarts {
         this.kursus.addAllStudents(this.students);
         this.kursus.addMaterials(this.teachingMaterials);
 
-
+        System.out.println(kursus);
     }
 
     private void createHouses() {
