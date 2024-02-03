@@ -51,4 +51,13 @@ public class HogwartsStudent extends Student implements HogwartsPerson {
     public void setTeams(ArrayList<String> teams) {
         this.teams = teams;
     }
+
+    @Override
+    public String toString() {
+        return "HogwartsStudent{" +
+                "house=" + house +
+                ", prefect=" + prefect +
+                ", teams=" + teams +
+                '}';
+    }
 }

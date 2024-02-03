@@ -41,4 +41,13 @@ public class HogwartsTeacher extends Teacher implements HogwartsPerson {
     public void setHouse(House house) {
         this.house = house;
     }
+
+
+    @Override
+    public String toString() {
+        return "HogwartsTeacher{" +
+                "house=" + house +
+                ", headOfHouse=" + headOfHouse +
+                '}';
+    }
 }

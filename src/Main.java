@@ -1,10 +1,10 @@
-import edu.hogwarts.InitApp;
+import edu.hogwarts.Hogwarts;
 
 public class Main {
 
     public static void main(String[] args) {
-        InitApp application = new InitApp();
-        application.initialize();
+        Hogwarts hogwarts = new Hogwarts();
+        hogwarts.initialize();
     }
 
 

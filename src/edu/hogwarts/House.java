@@ -1,6 +1,7 @@
 package edu.hogwarts;
 
 
+import java.util.Arrays;
 
 public class House {
 
@@ -40,5 +41,14 @@ public class House {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "name='" + name + '\'' +
+                ", founder='" + founder + '\'' +
+                ", colors=" + Arrays.toString(colors) +
+                '}';
     }
 }

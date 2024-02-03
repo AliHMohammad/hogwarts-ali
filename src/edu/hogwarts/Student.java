@@ -48,4 +48,13 @@ public class Student extends Person {
         this.graduationYear = graduationYear;
     }
 
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "enrollmentYear=" + enrollmentYear +
+                ", graduationYear=" + graduationYear +
+                ", graduated=" + graduated +
+                '}';
+    }
 }

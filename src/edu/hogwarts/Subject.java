@@ -39,4 +39,13 @@ public class Subject {
     public void setElective(boolean elective) {
         this.elective = elective;
     }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "name='" + name + '\'' +
+                ", schoolYear=" + schoolYear +
+                ", elective=" + elective +
+                '}';
+    }
 }

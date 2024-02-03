@@ -81,4 +81,14 @@ public class Course {
             addMaterial(material);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "subject=" + subject +
+                ", teacher=" + teacher +
+                ", students=" + students +
+                ", materials=" + materials +
+                '}';
+    }
 }

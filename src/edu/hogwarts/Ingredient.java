@@ -34,4 +34,12 @@ public class Ingredient extends TeachingMaterial {
     public void setUnit(String unit) {
         this.unit = unit;
     }
+
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "amount=" + amount +
+                ", unit='" + unit + '\'' +
+                '}';
+    }
 }

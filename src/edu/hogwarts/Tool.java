@@ -29,5 +29,10 @@ public class Tool extends TeachingMaterial {
         this.description = description;
     }
 
-
+    @Override
+    public String toString() {
+        return "Tool{" +
+                "description='" + description + '\'' +
+                '}';
+    }
 }

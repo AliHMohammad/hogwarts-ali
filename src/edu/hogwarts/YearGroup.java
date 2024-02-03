@@ -44,4 +44,13 @@ public class YearGroup {
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
+
+    @Override
+    public String toString() {
+        return "YearGroup{" +
+                "schoolYear=" + schoolYear +
+                ", beginningOfSchoolYear=" + beginningOfSchoolYear +
+                ", students=" + students +
+                '}';
+    }
 }
