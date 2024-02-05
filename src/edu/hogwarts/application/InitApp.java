@@ -20,7 +20,7 @@ public class InitApp {
     public ArrayList<HogwartsStudent> createStudentsArr() {
         ArrayList<HogwartsStudent> students = new ArrayList<>();
 
-
+        students.add(new HogwartsStudent());
 
         return students;
     }
@@ -28,12 +28,12 @@ public class InitApp {
     public ArrayList<HogwartsTeacher> createTeachersArr() {
         ArrayList<HogwartsTeacher> teachers = new ArrayList<>();
 
-        teachers.add(new HogwartsTeacher("Albus Percival Wulfric Brian Dumbledore", EmploymentType.HEADMASTER, LocalDate.now(), null, houses.get(1), false));
-        teachers.add(new HogwartsTeacher("Minerva McGonegall", EmploymentType.HEAD_OF_GRYFFINDOR_HOUSE, LocalDate.now(), null, houses.get(1), true));
-        teachers.add(new HogwartsTeacher("Pomona Sprout", EmploymentType.HEAD_OF_HUFFLEPUFF_HOUSE, LocalDate.now(), null, houses.get(2), true));
-        teachers.add(new HogwartsTeacher("Filius Flitwick", EmploymentType.HEAD_OF_RAVENCLAW_HOUSE, LocalDate.now(), null, houses.get(3), true));
-        teachers.add(new HogwartsTeacher("Severus Snape", EmploymentType.HEAD_OF_SLYTHERIN_HOUSE, LocalDate.now(), null, houses.get(0), true));
-        teachers.add(new HogwartsTeacher("Horace Slughorn", EmploymentType.TEACHER, LocalDate.of(2000, 12, 12), null, houses.get(0), false));
+        teachers.add(new HogwartsTeacher("Albus Percival Wulfric Brian Dumbledore", "16-8-1881", EmploymentType.HEADMASTER, LocalDate.now(), null, houses.get(1), false));
+        teachers.add(new HogwartsTeacher("Minerva McGonegall", "04-10-1890", EmploymentType.HEAD_OF_GRYFFINDOR_HOUSE, LocalDate.now(), null, houses.get(1), true));
+        teachers.add(new HogwartsTeacher("Pomona Sprout", "15-05-1910", EmploymentType.HEAD_OF_HUFFLEPUFF_HOUSE, LocalDate.now(), null, houses.get(2), true));
+        teachers.add(new HogwartsTeacher("Filius Flitwick", "17-10-1958", EmploymentType.HEAD_OF_RAVENCLAW_HOUSE, LocalDate.now(), null, houses.get(3), true));
+        teachers.add(new HogwartsTeacher("Severus Snape", "09-01-1960", EmploymentType.HEAD_OF_SLYTHERIN_HOUSE, LocalDate.now(), null, houses.get(0), true));
+        teachers.add(new HogwartsTeacher("Horace Slughorn", "28-04-1913", EmploymentType.TEACHER, LocalDate.of(2000, 12, 12), null, houses.get(0), false));
 
         return teachers;
     }

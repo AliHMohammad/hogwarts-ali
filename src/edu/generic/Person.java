@@ -1,19 +1,25 @@
 package edu.generic;
 
+import java.time.LocalDate;
+
 public class Person {
 
     private String firstName;
     private String middleName;
     private String lastName;
 
-    public Person(String firstName, String middleName, String lastName) {
+    private LocalDate dateOfBirth;
+
+    public Person(String firstName, String middleName, String lastName, String dateOfBirth) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
+        setDateOfBirth(dateOfBirth);
     }
 
-    public Person(String fullName) {
+    public Person(String fullName, String dateOfBirth) {
         setFullName(fullName);
+        setDateOfBirth(dateOfBirth);
     }
 
     public Person() {
@@ -59,6 +65,17 @@ public class Person {
 
     public boolean hasMiddleName() {
         return this.middleName != null;
+    }
+
+    private void setDateOfBirth(String dateOfBirth) {
+        String[] dates = dateOfBirth.split("-");
+        this.dateOfBirth = LocalDate.of(Integer.parseInt(dates[2]), Integer.parseInt(dates[1]), Integer.parseInt(dates[0]));
+    }
+
+    public int getAge() {
+        LocalDate movieDate = LocalDate.of(1992,1,1);
+
+        return dateOfBirth.until(movieDate).getYears();
     }
 
     @Override

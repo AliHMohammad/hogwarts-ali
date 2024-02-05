@@ -10,16 +10,16 @@ public class HogwartsStudent extends Student implements HogwartsPerson {
     private boolean prefect;
     private ArrayList<String> teams;
 
-    public HogwartsStudent(String firstName, String middleName, String lastName, int enrollmentYear, int graduationYear, boolean graduated, House house,
+    public HogwartsStudent(String firstName, String middleName, String lastName, String dateOfBirth, int enrollmentYear, int graduationYear, boolean graduated, House house,
                            boolean prefect) {
-        super(firstName, middleName, lastName, enrollmentYear, graduationYear, graduated);
+        super(firstName, middleName, lastName, dateOfBirth, enrollmentYear, graduationYear, graduated);
         this.house = house;
         this.prefect = prefect;
         this.teams = new ArrayList<>();
     }
 
-    public HogwartsStudent(String fullName, int enrollmentYear, int graduationYear, boolean graduated, House house, boolean prefect) {
-        super(fullName, enrollmentYear, graduationYear, graduated);
+    public HogwartsStudent(String fullName, String dateOfBirth, int enrollmentYear, int graduationYear, boolean graduated, House house, boolean prefect) {
+        super(fullName, dateOfBirth, enrollmentYear, graduationYear, graduated);
         this.house = house;
         this.prefect = prefect;
         this.teams = new ArrayList<>();
