@@ -11,20 +11,24 @@ import java.util.Scanner;
 public class UserInterface {
 
     private Scanner scanner;
+    private ArrayList<String> inputs;
 
     public UserInterface() {
         scanner = new Scanner(System.in);
+        inputs = new ArrayList<>();
     }
 
     public ArrayList<String> run() {
         printCommands();
         char command = Character.toLowerCase(scanner.next().charAt(0));
-        ArrayList<String> inputs = new ArrayList<>();
+
 
         if (command == 'f') {
-            return filter();
+            filterInput();
+            return inputs;
         } else if (command == 's') {
-            return sort();
+            sortInput();
+            return inputs;
         } else if (command == 'a') {
             inputs.add("a");
             return inputs;
@@ -38,26 +42,21 @@ public class UserInterface {
         return null;
     }
 
-    private ArrayList<String> sort() {
+    private void sortInput() {
         printSpecifySort();
         String sortBy = scanner.nextLine().toLowerCase();
         printSpecifySortDirection();
         String sortDir = scanner.nextLine().toLowerCase();
 
-        ArrayList<String> inputs = new ArrayList<>();
         inputs.add(sortBy);
         inputs.add(sortDir);
-
-        return inputs;
     }
 
-    private ArrayList<String> filter() {
+    private void filterInput() {
         printSpecifyFilter();
         String filterBy = scanner.nextLine().toLowerCase();
 
-        ArrayList<String> inputs = new ArrayList<>();
         inputs.add(filterBy);
-        return inputs;
     }
 
     private void printWelcome() {
@@ -134,15 +133,11 @@ public class UserInterface {
     // fornavn, mellemnavn, efternavn, alder, house, rolle
     public void printTableBody(List<HogwartsPerson> hogwartsPersonList) {
         for (HogwartsPerson person : hogwartsPersonList) {
-
-
             if (person instanceof HogwartsStudent student) {
                 System.out.println(String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", student.getFirstName(), "|", student.getMiddleName(), "|", student.getLastName(), "|", student.getAge(), "|", student.getHouse(), "|", "Student"));
             } else if (person instanceof HogwartsTeacher teacher) {
-                System.out.println(String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", teacher.getFirstName(), "|", teacher.getMiddleName(), "|", teacher.getLastName(), "|", teacher.getAge(), "|", teacher.getHouse(), "|", "Student"));
+                System.out.println(String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", teacher.getFirstName(), "|", teacher.getMiddleName(), "|", teacher.getLastName(), "|", teacher.getAge(), "|", teacher.getHouse(), "|", "Teacher"));
             }
-
-
         }
     }
 
