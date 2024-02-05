@@ -12,7 +12,6 @@ public class Application {
     private UserInterface userInterface;
     private StudentController studentController;
     private TeacherController teacherController;
-
     private List<HogwartsPerson> hogwartsPeople;
 
     public Application() {
@@ -30,16 +29,11 @@ public class Application {
 
     public void run() {
         createTestData();
-        updateHogwartsPeople();
-
-        userInterface.printWelcome();
-        //while true her
-        userInterface.printList((ArrayList<HogwartsPerson>) hogwartsPeople);
-        System.out.println(hogwartsPeople.size());
-
+        // updateHogwartsPeople();
+        userInterface.start();
     }
 
-    public void updateHogwartsPeople() {
+    /*public void updateHogwartsPeople() {
         hogwartsPeople.clear();
 
         List<HogwartsStudent> students = studentController.getAllStudents();
@@ -47,7 +41,7 @@ public class Application {
 
         hogwartsPeople.addAll(students);
         hogwartsPeople.addAll(teachers);
-    }
+    }*/
 
     public void clearHogwartsPeople() {
         hogwartsPeople.clear();

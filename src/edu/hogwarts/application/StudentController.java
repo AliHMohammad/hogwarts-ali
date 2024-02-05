@@ -50,9 +50,6 @@ public class StudentController implements SortAndFilter<HogwartsStudent> {
 
     @Override
     public List<HogwartsStudent> filter(List<HogwartsStudent> arr, String filterBy) {
-        return arr.stream()
-                .filter(student ->
-                    student.getAge() == 11
-                ).toList();
+        return null;
     }
 }
