@@ -32,6 +32,11 @@ public class Application {
         createTestData();
         updateHogwartsPeople();
 
+        userInterface.printWelcome();
+        //while true her
+        userInterface.printList((ArrayList<HogwartsPerson>) hogwartsPeople);
+        System.out.println(hogwartsPeople.size());
+
     }
 
     public void updateHogwartsPeople() {
@@ -42,6 +47,10 @@ public class Application {
 
         hogwartsPeople.addAll(students);
         hogwartsPeople.addAll(teachers);
+    }
+
+    public void clearHogwartsPeople() {
+        hogwartsPeople.clear();
     }
 
     public void createTestData() {
@@ -56,5 +65,9 @@ public class Application {
         for (int i = 0; i < studentsArr.size(); i++) {
             studentController.createStudent(studentsArr.get(i));
         }
+    }
+
+    public List<HogwartsPerson> getHogwartsPeople() {
+        return hogwartsPeople;
     }
 }
