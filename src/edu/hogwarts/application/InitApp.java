@@ -20,7 +20,26 @@ public class InitApp {
     public ArrayList<HogwartsStudent> createStudentsArr() {
         ArrayList<HogwartsStudent> students = new ArrayList<>();
 
-        students.add(new HogwartsStudent());
+        //Gryffindor
+        students.add(new HogwartsStudent("Lavender Brown", "01-09-1979", 1991, 1998, false, houses.get(1), false));
+        students.add(new HogwartsStudent("Harry Potter", "31-07-1980", 1991, 1998, true, houses.get(1), true));
+        students.add(new HogwartsStudent("Hermione Granger", "19-09-1979", 1991, 1998, true, houses.get(1), true));
+        students.add(new HogwartsStudent("Neville Longbottom", "30-07-1980", 1991, 1998, true, houses.get(1), false));
+
+        //Hufflepuff
+        students.add(new HogwartsStudent("Hannah Abbott", "01-09-1979", 1991, 1998, true, houses.get(2), true));
+        students.add(new HogwartsStudent("Susan Bones", "15-09-1979", 1991, 1998, true, houses.get(2), true));
+        students.add(new HogwartsStudent("Justin Finch-Fletchley", "20-09-1979", 1991, 1998, true, houses.get(2), true));
+
+        //Ravenclaw
+        students.add(new HogwartsStudent("Michael Cornor", "21-09-1979", 1991, 1998, true, houses.get(3), false));
+        students.add(new HogwartsStudent("Sue Li", "31-09-1919", 1991, 1998, true, houses.get(3), false));
+        students.add(new HogwartsStudent("Terry Boot", "21-04-1980", 1991, 1998, true, houses.get(3), false));
+
+        //Slytherin
+        students.add(new HogwartsStudent("Vincent Crabbe", "01-09-1980", 1991, 1998, false, houses.get(0), false));
+        students.add(new HogwartsStudent("Draco Malfoy", "05-06-1980", 1991, 1998, true, houses.get(0), true));
+        students.add(new HogwartsStudent("Gregory Goyle", "10-09-1980", 1991, 1998, true, houses.get(0), false));
 
         return students;
     }

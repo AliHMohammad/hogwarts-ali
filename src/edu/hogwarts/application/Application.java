@@ -10,6 +10,7 @@ public class Application {
     private UserInterface userInterface;
     private StudentController studentController;
     private TeacherController teacherController;
+
     public Application() {
         userInterface = new UserInterface();
         studentController = new StudentController();
@@ -32,5 +33,12 @@ public class Application {
         List<HogwartsStudent> studentsArr = testData.createStudentsArr();
         List<HogwartsTeacher> teachersArr = testData.createTeachersArr();
 
+        for (int i = 0; i < teachersArr.size(); i++) {
+            teacherController.createTeacher(teachersArr.get(i));
+        }
+
+        for (int i = 0; i < studentsArr.size(); i++) {
+            studentController.createStudent(studentsArr.get(i));
+        }
     }
 }
