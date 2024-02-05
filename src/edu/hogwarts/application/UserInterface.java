@@ -1,8 +1,11 @@
 package edu.hogwarts.application;
 
 import edu.hogwarts.data.HogwartsPerson;
+import edu.hogwarts.data.HogwartsStudent;
+import edu.hogwarts.data.HogwartsTeacher;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -13,37 +16,48 @@ public class UserInterface {
         scanner = new Scanner(System.in);
     }
 
-    public void start() {
-        printWelcome();
+    public ArrayList<String> run() {
+        printCommands();
+        char command = Character.toLowerCase(scanner.next().charAt(0));
+        ArrayList<String> inputs = new ArrayList<>();
 
-        while (true) {
-            printCommands();
-            char command = Character.toLowerCase(scanner.next().charAt(0));
-
-            if (command == 'f') {
-                filter();
-            } else if (command == 's') {
-                sort();
-            } else if (command == 'x') {
-                printFarewell();
-                break;
-            }
-
-            System.out.println("Unknown command. Try again.");
+        if (command == 'f') {
+            return filter();
+        } else if (command == 's') {
+            return sort();
+        } else if (command == 'a') {
+            inputs.add("a");
+            return inputs;
+        } else if (command == 'x') {
+            printFarewell();
+            inputs.add("x");
+            return inputs;
         }
+
+        System.out.println("Unknown command. Try again.");
+        return null;
     }
 
-    private void sort() {
+    private ArrayList<String> sort() {
         printSpecifySort();
         String sortBy = scanner.nextLine().toLowerCase();
         printSpecifySortDirection();
-        char sortDir = Character.toLowerCase(scanner.next().charAt(0));
+        String sortDir = scanner.nextLine().toLowerCase();
 
+        ArrayList<String> inputs = new ArrayList<>();
+        inputs.add(sortBy);
+        inputs.add(sortDir);
+
+        return inputs;
     }
 
-    private void filter() {
+    private ArrayList<String> filter() {
         printSpecifyFilter();
-        char filterBy = Character.toLowerCase(scanner.next().charAt(0));
+        String filterBy = scanner.nextLine().toLowerCase();
+
+        ArrayList<String> inputs = new ArrayList<>();
+        inputs.add(filterBy);
+        return inputs;
     }
 
     private void printWelcome() {
@@ -66,16 +80,11 @@ public class UserInterface {
                 """);
     }
 
-    /*private void printList(ArrayList<HogwartsPerson> list) {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
-    }*/
-
     private void printCommands() {
         System.out.println("""
                 Tryk 'f' for filtrering af hus
                 Tryk 's' for sortering
+                Tryk 'a' for at vise alle
                 ----------------------
                 Tryk 'x' for at afslutte
                 """);
@@ -86,7 +95,10 @@ public class UserInterface {
         System.out.println("Mulige inputs ->");
         System.out.println("""
                 alder
-                navn
+                fornavn
+                mellemnavn
+                efternavn
+                hus
                 """);
     }
 
@@ -98,11 +110,40 @@ public class UserInterface {
     }
 
     private void printSpecifyFilter() {
+        System.out.println("Hvad skal der filtreres efter?");
+        System.out.println("Mulige inputs ->");
         System.out.println("""
-                Tryk 'r' for Ravenclaw
-                Tryk 's' for Slytherin
-                Tryk 'h' for Hufflepuff
-                Tryk 'g' for Gryffindor
+                Ravenclaw
+                Slytherin
+                Hufflepuff
+                Gryffindor
+                Student
+                Teacher
                 """);
     }
+
+    public void printTableHeader() {
+        System.out.println(
+                String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", "Fornavn", "|", "Mellemnavn", "|", "Efternavn", "|", "Alder", "|", "Hus", "|",
+                        "Rolle"));
+        System.out.println(String.format("%s",
+                "-----------------------------------------------------------------------------------------------------------------------------------------------------------"));
+    }
+
+
+    // fornavn, mellemnavn, efternavn, alder, house, rolle
+    public void printTableBody(List<HogwartsPerson> hogwartsPersonList) {
+        for (HogwartsPerson person : hogwartsPersonList) {
+
+
+            if (person instanceof HogwartsStudent student) {
+                System.out.println(String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", student.getFirstName(), "|", student.getMiddleName(), "|", student.getLastName(), "|", student.getAge(), "|", student.getHouse(), "|", "Student"));
+            } else if (person instanceof HogwartsTeacher teacher) {
+                System.out.println(String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", teacher.getFirstName(), "|", teacher.getMiddleName(), "|", teacher.getLastName(), "|", teacher.getAge(), "|", teacher.getHouse(), "|", "Student"));
+            }
+
+
+        }
+    }
+
 }

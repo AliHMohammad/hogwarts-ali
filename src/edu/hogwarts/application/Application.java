@@ -23,17 +23,42 @@ public class Application {
 
     public static void main(String[] args) {
         Application application = new Application();
-        application.run();
+        application.start();
     }
 
-
-    public void run() {
+    public void start() {
         createTestData();
         // updateHogwartsPeople();
-        userInterface.start();
+        while (true) {
+            List<String> inputs = userInterface.run();
+
+            if (inputs == null) {
+                continue;
+            } else if (inputs.get(0).equals("x")) {
+                break;
+            }
+
+
+
+            if (inputs.size() == 2) {
+                //Sortering
+
+            } else if (inputs.get(0).equals("a")) {
+                //Vis alle
+                getAllHogwartsPeople();
+            } else {
+                //filtrering
+
+            }
+
+            //Print table header
+            //Print table body
+            userInterface.printTableHeader();
+            userInterface.printTableBody(hogwartsPeople);
+        }
     }
 
-    /*public void updateHogwartsPeople() {
+    public void getAllHogwartsPeople() {
         hogwartsPeople.clear();
 
         List<HogwartsStudent> students = studentController.getAllStudents();
@@ -41,7 +66,7 @@ public class Application {
 
         hogwartsPeople.addAll(students);
         hogwartsPeople.addAll(teachers);
-    }*/
+    }
 
     public void clearHogwartsPeople() {
         hogwartsPeople.clear();
