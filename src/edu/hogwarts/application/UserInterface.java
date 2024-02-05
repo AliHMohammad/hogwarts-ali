@@ -18,13 +18,13 @@ public class UserInterface {
 
         while (true) {
             printCommands();
-            String command = scanner.nextLine().toLowerCase();
+            char command = Character.toLowerCase(scanner.next().charAt(0));
 
-            if (command.equals("f")) {
+            if (command == 'f') {
                 filter();
-            } else if (command.equals("s")) {
+            } else if (command == 's') {
                 sort();
-            } else if (command.equals("x")) {
+            } else if (command == 'x') {
                 printFarewell();
                 break;
             }
@@ -34,11 +34,16 @@ public class UserInterface {
     }
 
     private void sort() {
+        printSpecifySort();
+        String sortBy = scanner.nextLine().toLowerCase();
+        printSpecifySortDirection();
+        char sortDir = Character.toLowerCase(scanner.next().charAt(0));
 
     }
 
     private void filter() {
-
+        printSpecifyFilter();
+        char filterBy = Character.toLowerCase(scanner.next().charAt(0));
     }
 
     private void printWelcome() {
