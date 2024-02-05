@@ -19,27 +19,22 @@ public class UserInterface {
     }
 
     public ArrayList<String> run() {
+        inputs.clear();
         printCommands();
-        char command = Character.toLowerCase(scanner.next().charAt(0));
+        String command = scanner.nextLine();
 
-
-        if (command == 'f') {
+        if (command.equals("f")) {
             filterInput();
-            return inputs;
-        } else if (command == 's') {
+        } else if (command.equals("s")) {
             sortInput();
-            return inputs;
-        } else if (command == 'a') {
+        } else if (command.equals("a")) {
             inputs.add("a");
-            return inputs;
-        } else if (command == 'x') {
-            printFarewell();
+        } else if (command.equals("x")) {
             inputs.add("x");
-            return inputs;
         }
 
-        System.out.println("Unknown command. Try again.");
-        return null;
+
+        return inputs;
     }
 
     private void sortInput() {
@@ -52,9 +47,15 @@ public class UserInterface {
         inputs.add(sortDir);
     }
 
+    public void printUnknownCommand() {
+        System.out.println("Unknown command. Try again.");
+        System.out.println("============================");
+    }
+
     private void filterInput() {
         printSpecifyFilter();
         String filterBy = scanner.nextLine().toLowerCase();
+        //String filterBy = "ravenclaw";
 
         inputs.add(filterBy);
     }
@@ -69,7 +70,7 @@ public class UserInterface {
                 """);
     }
 
-    private void printFarewell() {
+    public void printFarewell() {
         System.out.println("""
                 ===============================================
                 ===============================================
@@ -81,7 +82,7 @@ public class UserInterface {
 
     private void printCommands() {
         System.out.println("""
-                Tryk 'f' for filtrering af hus
+                Tryk 'f' for filtrering
                 Tryk 's' for sortering
                 Tryk 'a' for at vise alle
                 ----------------------
@@ -123,7 +124,8 @@ public class UserInterface {
 
     public void printTableHeader() {
         System.out.println(
-                String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", "Fornavn", "|", "Mellemnavn", "|", "Efternavn", "|", "Alder", "|", "Hus", "|",
+                String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", "Fornavn", "|", "Mellemnavn", "|", "Efternavn", "|", "Alder", "|", "Hus",
+                        "|",
                         "Rolle"));
         System.out.println(String.format("%s",
                 "-----------------------------------------------------------------------------------------------------------------------------------------------------------"));
@@ -134,9 +136,13 @@ public class UserInterface {
     public void printTableBody(List<HogwartsPerson> hogwartsPersonList) {
         for (HogwartsPerson person : hogwartsPersonList) {
             if (person instanceof HogwartsStudent student) {
-                System.out.println(String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", student.getFirstName(), "|", student.getMiddleName(), "|", student.getLastName(), "|", student.getAge(), "|", student.getHouse(), "|", "Student"));
+                System.out.println(
+                        String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", student.getFirstName(), "|", student.getMiddleName(), "|",
+                                student.getLastName(), "|", student.getAge(), "|", student.getHouse(), "|", "Student"));
             } else if (person instanceof HogwartsTeacher teacher) {
-                System.out.println(String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", teacher.getFirstName(), "|", teacher.getMiddleName(), "|", teacher.getLastName(), "|", teacher.getAge(), "|", teacher.getHouse(), "|", "Teacher"));
+                System.out.println(
+                        String.format("%15s %7s %22s %10s %22s %10s %10s %7s %14s %10s %12s", teacher.getFirstName(), "|", teacher.getMiddleName(), "|",
+                                teacher.getLastName(), "|", teacher.getAge(), "|", teacher.getHouse(), "|", "Teacher"));
             }
         }
     }

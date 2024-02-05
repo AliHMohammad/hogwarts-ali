@@ -29,12 +29,15 @@ public class Application {
     public void start() {
         createTestData();
         // updateHogwartsPeople();
+
         while (true) {
             List<String> inputs = userInterface.run();
 
-            if (inputs == null) {
+            if (inputs.isEmpty()) {
+                userInterface.printUnknownCommand();
                 continue;
             } else if (inputs.get(0).equals("x")) {
+                userInterface.printFarewell();
                 break;
             }
 
@@ -48,13 +51,19 @@ public class Application {
                 getAllHogwartsPeople();
             } else {
                 //filtrering
+                String filterBy = inputs.get(0);
+                List<HogwartsStudent> students = studentController.filter(filterBy);
+                List<HogwartsTeacher> teachers = teacherController.filter(filterBy);
 
+                if (students != null) hogwartsPeople.addAll(students);
+                if (teachers != null) hogwartsPeople.addAll(teachers);
             }
 
             //Print table header
             //Print table body
             userInterface.printTableHeader();
             userInterface.printTableBody(hogwartsPeople);
+            clearHogwartsPeople();
         }
     }
 

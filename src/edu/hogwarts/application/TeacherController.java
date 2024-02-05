@@ -47,7 +47,18 @@ public class TeacherController implements SortAndFilter<HogwartsTeacher> {
     }
 
     @Override
-    public List<HogwartsTeacher> filter(List<HogwartsTeacher> arr, String filterBy) {
-        return null;
+    public List<HogwartsTeacher> filter(String filterBy) {
+        if (filterBy.equals("student")) {
+            return null;
+        }
+
+        if (filterBy.equals("teacher")) {
+            return getAllTeachers();
+        }
+
+        return teachers.values().stream()
+                .filter(teacher -> teacher.getHouse().toString().toLowerCase().equals(filterBy))
+                .toList();
+
     }
 }

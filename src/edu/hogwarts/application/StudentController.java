@@ -45,11 +45,24 @@ public class StudentController implements SortAndFilter<HogwartsStudent> {
 
     @Override
     public List<HogwartsStudent> sort(List<HogwartsStudent> arr, String sortDir, String sortBy) {
+
+
         return null;
     }
 
     @Override
-    public List<HogwartsStudent> filter(List<HogwartsStudent> arr, String filterBy) {
-        return null;
+    public List<HogwartsStudent> filter(String filterBy) {
+        if (filterBy.equals("teacher")) {
+            return null;
+        }
+
+        if (filterBy.equals("student")) {
+            return getAllStudents();
+        }
+
+
+        return students.values().stream()
+                .filter(student -> student.getHouse().toString().toLowerCase().equals(filterBy))
+                .toList();
     }
 }
