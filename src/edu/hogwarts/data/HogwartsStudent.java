@@ -1,4 +1,6 @@
-package edu.hogwarts;
+package edu.hogwarts.data;
+
+import edu.generic.Student;
 
 import java.util.ArrayList;
 

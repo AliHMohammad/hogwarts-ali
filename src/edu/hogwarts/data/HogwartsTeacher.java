@@ -1,4 +1,6 @@
-package edu.hogwarts;
+package edu.hogwarts.data;
+
+import edu.generic.Teacher;
 
 import java.time.*;
 

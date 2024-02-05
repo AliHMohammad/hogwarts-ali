@@ -1,4 +1,4 @@
-package edu.hogwarts;
+package edu.generic;
 
 public class Person {
 
