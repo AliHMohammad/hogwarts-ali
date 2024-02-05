@@ -47,9 +47,7 @@ public class HogwartsTeacher extends Teacher implements HogwartsPerson {
 
     @Override
     public String toString() {
-        return "HogwartsTeacher{" +
-                "house=" + house +
-                ", headOfHouse=" + headOfHouse +
-                '}';
+        String headOfHouse = isHeadOfHouse() ? "They are head of house" : "They are not head of house";
+        return this.getFullName() + " is " + getAge() + " years old. " + headOfHouse + " " + getHouse() + ".";
     }
 }

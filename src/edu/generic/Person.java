@@ -1,6 +1,7 @@
 package edu.generic;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Person {
 
@@ -73,7 +74,8 @@ public class Person {
     }
 
     public int getAge() {
-        LocalDate movieDate = LocalDate.of(1992,1,1);
+        LocalDate now = LocalDate.now();
+        LocalDate movieDate = LocalDate.of(1992,now.getMonth(),now.getDayOfMonth());
 
         return dateOfBirth.until(movieDate).getYears();
     }

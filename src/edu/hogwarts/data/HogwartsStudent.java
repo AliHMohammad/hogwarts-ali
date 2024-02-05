@@ -56,10 +56,6 @@ public class HogwartsStudent extends Student implements HogwartsPerson {
 
     @Override
     public String toString() {
-        return "HogwartsStudent{" +
-                "house=" + house +
-                ", prefect=" + prefect +
-                ", teams=" + teams +
-                '}';
+        return this.getFullName() + " is " + getAge() + " years old and is in house " + getHouse() + ".";
     }
 }

@@ -15,6 +15,7 @@ public class InitApp {
 
     public InitApp() {
         houses = new ArrayList<>();
+        initiateHouses();
     }
 
     public ArrayList<HogwartsStudent> createStudentsArr() {
@@ -33,7 +34,7 @@ public class InitApp {
 
         //Ravenclaw
         students.add(new HogwartsStudent("Michael Cornor", "21-09-1979", 1991, 1998, true, houses.get(3), false));
-        students.add(new HogwartsStudent("Sue Li", "31-09-1919", 1991, 1998, true, houses.get(3), false));
+        students.add(new HogwartsStudent("Sue Li", "30-09-1979", 1991, 1998, true, houses.get(3), false));
         students.add(new HogwartsStudent("Terry Boot", "21-04-1980", 1991, 1998, true, houses.get(3), false));
 
         //Slytherin

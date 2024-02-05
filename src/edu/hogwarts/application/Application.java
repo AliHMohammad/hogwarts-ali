@@ -1,8 +1,10 @@
 package edu.hogwarts.application;
 
+import edu.hogwarts.data.HogwartsPerson;
 import edu.hogwarts.data.HogwartsStudent;
 import edu.hogwarts.data.HogwartsTeacher;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -11,10 +13,13 @@ public class Application {
     private StudentController studentController;
     private TeacherController teacherController;
 
+    private List<HogwartsPerson> hogwartsPeople;
+
     public Application() {
         userInterface = new UserInterface();
         studentController = new StudentController();
         teacherController = new TeacherController();
+        hogwartsPeople = new ArrayList<>();
     }
 
     public static void main(String[] args) {
@@ -25,7 +30,18 @@ public class Application {
 
     public void run() {
         createTestData();
-        //Mere her
+        updateHogwartsPeople();
+
+    }
+
+    public void updateHogwartsPeople() {
+        hogwartsPeople.clear();
+
+        List<HogwartsStudent> students = studentController.getAllStudents();
+        List<HogwartsTeacher> teachers = teacherController.getAllTeachers();
+
+        hogwartsPeople.addAll(students);
+        hogwartsPeople.addAll(teachers);
     }
 
     public void createTestData() {
