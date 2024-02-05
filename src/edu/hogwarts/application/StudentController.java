@@ -45,8 +45,6 @@ public class StudentController implements SortAndFilter<HogwartsStudent> {
 
     @Override
     public List<HogwartsStudent> sort(List<HogwartsStudent> arr, String sortDir, String sortBy) {
-
-
         return null;
     }
 

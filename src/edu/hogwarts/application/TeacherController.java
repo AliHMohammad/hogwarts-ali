@@ -59,6 +59,5 @@ public class TeacherController implements SortAndFilter<HogwartsTeacher> {
         return teachers.values().stream()
                 .filter(teacher -> teacher.getHouse().toString().toLowerCase().equals(filterBy))
                 .toList();
-
     }
 }

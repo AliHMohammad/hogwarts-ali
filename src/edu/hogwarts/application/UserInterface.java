@@ -33,7 +33,6 @@ public class UserInterface {
             inputs.add("x");
         }
 
-
         return inputs;
     }
 
@@ -55,12 +54,11 @@ public class UserInterface {
     private void filterInput() {
         printSpecifyFilter();
         String filterBy = scanner.nextLine().toLowerCase();
-        //String filterBy = "ravenclaw";
 
         inputs.add(filterBy);
     }
 
-    private void printWelcome() {
+    public void printWelcome() {
         System.out.println("""
                 ===============================================
                 ===============================================
@@ -93,6 +91,7 @@ public class UserInterface {
     private void printSpecifySort() {
         System.out.println("Hvad skal der sorteres efter?");
         System.out.println("Mulige inputs ->");
+        System.out.println("-----");
         System.out.println("""
                 alder
                 fornavn
@@ -112,6 +111,7 @@ public class UserInterface {
     private void printSpecifyFilter() {
         System.out.println("Hvad skal der filtreres efter?");
         System.out.println("Mulige inputs ->");
+        System.out.println("-----");
         System.out.println("""
                 Ravenclaw
                 Slytherin

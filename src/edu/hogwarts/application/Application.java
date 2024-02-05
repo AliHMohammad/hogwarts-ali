@@ -9,16 +9,14 @@ import java.util.List;
 
 public class Application {
 
-    private UserInterface userInterface;
-    private StudentController studentController;
-    private TeacherController teacherController;
-    private List<HogwartsPerson> hogwartsPeople;
+    private final UserInterface userInterface;
+    private final StudentController studentController;
+    private final TeacherController teacherController;
 
     public Application() {
         userInterface = new UserInterface();
         studentController = new StudentController();
         teacherController = new TeacherController();
-        hogwartsPeople = new ArrayList<>();
     }
 
     public static void main(String[] args) {
@@ -27,9 +25,10 @@ public class Application {
     }
 
     public void start() {
+        List<HogwartsPerson> hogwartsPeople = new ArrayList<>();
         createTestData();
-        // updateHogwartsPeople();
 
+        userInterface.printWelcome();
         while (true) {
             List<String> inputs = userInterface.run();
 
@@ -48,7 +47,7 @@ public class Application {
 
             } else if (inputs.get(0).equals("a")) {
                 //Vis alle
-                getAllHogwartsPeople();
+                hogwartsPeople = getAllHogwartsPeople();
             } else {
                 //filtrering
                 String filterBy = inputs.get(0);
@@ -60,25 +59,24 @@ public class Application {
             }
 
             //Print table header
-            //Print table body
             userInterface.printTableHeader();
+            //Print table body
             userInterface.printTableBody(hogwartsPeople);
-            clearHogwartsPeople();
+            //Clear hogwartsPeople List before starting over
+            hogwartsPeople.clear();
         }
     }
 
-    public void getAllHogwartsPeople() {
-        hogwartsPeople.clear();
+    public ArrayList<HogwartsPerson> getAllHogwartsPeople() {
+        ArrayList<HogwartsPerson> arr = new ArrayList<>();
 
         List<HogwartsStudent> students = studentController.getAllStudents();
         List<HogwartsTeacher> teachers = teacherController.getAllTeachers();
 
-        hogwartsPeople.addAll(students);
-        hogwartsPeople.addAll(teachers);
-    }
+        arr.addAll(students);
+        arr.addAll(teachers);
 
-    public void clearHogwartsPeople() {
-        hogwartsPeople.clear();
+        return arr;
     }
 
     public void createTestData() {
@@ -86,16 +84,13 @@ public class Application {
         List<HogwartsStudent> studentsArr = testData.createStudentsArr();
         List<HogwartsTeacher> teachersArr = testData.createTeachersArr();
 
-        for (int i = 0; i < teachersArr.size(); i++) {
-            teacherController.createTeacher(teachersArr.get(i));
+        for (HogwartsTeacher teacher : teachersArr) {
+            teacherController.createTeacher(teacher);
         }
 
-        for (int i = 0; i < studentsArr.size(); i++) {
-            studentController.createStudent(studentsArr.get(i));
+        for (HogwartsStudent student : studentsArr) {
+            studentController.createStudent(student);
         }
     }
 
-    public List<HogwartsPerson> getHogwartsPeople() {
-        return hogwartsPeople;
-    }
 }
