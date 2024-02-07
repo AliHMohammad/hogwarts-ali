@@ -21,6 +21,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        System.out.println("Part2");
         Application application = new Application();
         application.start();
     }
