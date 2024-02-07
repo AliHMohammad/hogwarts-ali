@@ -1,4 +1,6 @@
-package edu.hogwarts;
+package edu.generic;
+
+import edu.hogwarts.data.EmploymentType;
 
 import java.time.*;
 
@@ -9,15 +11,15 @@ public class Teacher extends Person {
     private LocalDate employmentStart;
     private LocalDate employmentEnd;
 
-    public Teacher(String firstName, String middleName, String lastName, EmploymentType employment, LocalDate employmentStart, LocalDate employmentEnd) {
-        super(firstName, middleName, lastName);
+    public Teacher(String firstName, String middleName, String lastName, String dateOfBirth, EmploymentType employment, LocalDate employmentStart, LocalDate employmentEnd) {
+        super(firstName, middleName, lastName, dateOfBirth);
         this.employment = employment;
         this.employmentStart = employmentStart;
         this.employmentEnd = employmentEnd;
     }
 
-    public Teacher(String fullName, EmploymentType employment, LocalDate employmentStart, LocalDate employmentEnd) {
-        super(fullName);
+    public Teacher(String fullName, String dateOfBirth, EmploymentType employment, LocalDate employmentStart, LocalDate employmentEnd) {
+        super(fullName, dateOfBirth);
         this.employment = employment;
         this.employmentStart = employmentStart;
         this.employmentEnd = employmentEnd;

@@ -1,4 +1,7 @@
-package edu.hogwarts;
+package edu.generic;
+
+import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Person {
 
@@ -6,14 +9,18 @@ public class Person {
     private String middleName;
     private String lastName;
 
-    public Person(String firstName, String middleName, String lastName) {
+    private LocalDate dateOfBirth;
+
+    public Person(String firstName, String middleName, String lastName, String dateOfBirth) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
+        setDateOfBirth(dateOfBirth);
     }
 
-    public Person(String fullName) {
+    public Person(String fullName, String dateOfBirth) {
         setFullName(fullName);
+        setDateOfBirth(dateOfBirth);
     }
 
     public Person() {
@@ -54,11 +61,23 @@ public class Person {
 
         this.firstName = fullName.substring(0, firstGap);
         this.lastName = fullName.substring(lastGap+1);
-        this.middleName = firstGap == lastGap ? null : fullName.substring(firstGap+1, lastGap);
+        this.middleName = firstGap == lastGap ? "" : fullName.substring(firstGap+1, lastGap);
     }
 
     public boolean hasMiddleName() {
         return this.middleName != null;
+    }
+
+    private void setDateOfBirth(String dateOfBirth) {
+        String[] dates = dateOfBirth.split("-");
+        this.dateOfBirth = LocalDate.of(Integer.parseInt(dates[2]), Integer.parseInt(dates[1]), Integer.parseInt(dates[0]));
+    }
+
+    public int getAge() {
+        LocalDate now = LocalDate.now();
+        LocalDate movieDate = LocalDate.of(1992,now.getMonth(),now.getDayOfMonth());
+
+        return dateOfBirth.until(movieDate).getYears();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package edu.hogwarts;
+package edu.generic;
 
 public class Student extends Person {
 
@@ -6,15 +6,15 @@ public class Student extends Person {
     private int graduationYear;
     private boolean graduated;
 
-    public Student(String firstName, String middleName, String lastName, int enrollmentYear, int graduationYear, boolean graduated) {
-        super(firstName, middleName, lastName);
+    public Student(String firstName, String middleName, String lastName, String dateOfBirth, int enrollmentYear, int graduationYear, boolean graduated) {
+        super(firstName, middleName, lastName, dateOfBirth);
         this.enrollmentYear = enrollmentYear;
         this.graduationYear = graduationYear;
         this.graduated = graduated;
     }
 
-    public Student(String fullName, int enrollmentYear, int graduationYear, boolean graduated) {
-        super(fullName);
+    public Student(String fullName, String dateOfBirth, int enrollmentYear, int graduationYear, boolean graduated) {
+        super(fullName, dateOfBirth);
         this.enrollmentYear = enrollmentYear;
         this.graduationYear = graduationYear;
         this.graduated = graduated;
