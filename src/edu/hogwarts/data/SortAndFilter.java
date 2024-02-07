@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface SortAndFilter<T> {
 
-    public List<T> sort(List<T> arr, String sortDir, String sortBy);
-    public List<T> filter(String filterBy);
+    List<T> sort(String sortBy, String sortDir);
+    List<T> filter(String filterBy);
+    List<T> reverseList(List<T> list);
 }

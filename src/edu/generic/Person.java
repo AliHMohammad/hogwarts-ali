@@ -61,7 +61,7 @@ public class Person {
 
         this.firstName = fullName.substring(0, firstGap);
         this.lastName = fullName.substring(lastGap+1);
-        this.middleName = firstGap == lastGap ? null : fullName.substring(firstGap+1, lastGap);
+        this.middleName = firstGap == lastGap ? "" : fullName.substring(firstGap+1, lastGap);
     }
 
     public boolean hasMiddleName() {
