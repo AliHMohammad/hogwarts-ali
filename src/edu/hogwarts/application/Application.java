@@ -27,10 +27,10 @@ public class Application {
 
     public void start() {
         createTestData();
-        List<HogwartsPerson> hogwartsPeople;
 
         userInterface.printWelcome();
         while (true) {
+            List<HogwartsPerson> hogwartsPeople = new ArrayList<>();
             List<String> inputs = userInterface.run();
 
 
@@ -48,61 +48,24 @@ public class Application {
                 String sortBy = inputs.get(0);
                 String sortDir = inputs.get(1);
 
-                hogwartsPeople = getAllHogwartsPeople();
+                hogwartsPeople.addAll(studentController.getAllStudents());
+                hogwartsPeople.addAll(teacherController.getAllTeachers());
                 hogwartsPeople = sort(hogwartsPeople, sortBy, sortDir);
             } else if (inputs.get(0).equals("a")) {
                 //Vis alle
-                hogwartsPeople = getAllHogwartsPeople();
+                hogwartsPeople.addAll(studentController.getAllStudents());
+                hogwartsPeople.addAll(teacherController.getAllTeachers());
             } else {
                 //filtrering
                 String filterBy = inputs.get(0);
-                hogwartsPeople = getFilteredHogwartsPeople(filterBy);
+                hogwartsPeople.addAll(studentController.filter(filterBy));
+                hogwartsPeople.addAll(teacherController.filter(filterBy));
             }
 
             //Print table header
             userInterface.printTableHeader();
             //Print table body
             userInterface.printTableBody(hogwartsPeople);
-            //Clear hogwartsPeople List before starting over
-
-        }
-    }
-
-    public ArrayList<HogwartsPerson> getAllHogwartsPeople() {
-        ArrayList<HogwartsPerson> arr = new ArrayList<>();
-
-        List<HogwartsStudent> students = studentController.getAllStudents();
-        List<HogwartsTeacher> teachers = teacherController.getAllTeachers();
-
-        arr.addAll(students);
-        arr.addAll(teachers);
-
-        return arr;
-    }
-
-    public ArrayList<HogwartsPerson> getFilteredHogwartsPeople(String filterBy) {
-        ArrayList<HogwartsPerson> arr = new ArrayList<>();
-
-        List<HogwartsStudent> students = studentController.filter(filterBy);
-        List<HogwartsTeacher> teachers = teacherController.filter(filterBy);
-
-        if (students != null) arr.addAll(students);
-        if (teachers != null) arr.addAll(teachers);
-
-        return arr;
-    }
-
-    public void createTestData() {
-        InitApp testData = new InitApp();
-        List<HogwartsStudent> studentsArr = testData.createStudentsArr();
-        List<HogwartsTeacher> teachersArr = testData.createTeachersArr();
-
-        for (HogwartsTeacher teacher : teachersArr) {
-            teacherController.createTeacher(teacher);
-        }
-
-        for (HogwartsStudent student : studentsArr) {
-            studentController.createStudent(student);
         }
     }
 
@@ -134,6 +97,7 @@ public class Application {
 
 
         if (sortDir.equalsIgnoreCase("d")) {
+            //Descending. reverse arr.
             sortedHogwartsPersons = reverseList(sortedHogwartsPersons);
         }
 
@@ -148,6 +112,20 @@ public class Application {
         }
 
         return reversedList;
+    }
+
+    public void createTestData() {
+        InitApp testData = new InitApp();
+        List<HogwartsStudent> studentsArr = testData.createStudentsArr();
+        List<HogwartsTeacher> teachersArr = testData.createTeachersArr();
+
+        for (HogwartsTeacher teacher : teachersArr) {
+            teacherController.createTeacher(teacher);
+        }
+
+        for (HogwartsStudent student : studentsArr) {
+            studentController.createStudent(student);
+        }
     }
 
 }

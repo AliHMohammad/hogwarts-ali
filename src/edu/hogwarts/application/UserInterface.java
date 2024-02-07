@@ -23,14 +23,11 @@ public class UserInterface {
         printCommands();
         String command = scanner.nextLine();
 
-        if (command.equals("f")) {
-            filterInput();
-        } else if (command.equals("s")) {
-            sortInput();
-        } else if (command.equals("a")) {
-            inputs.add("a");
-        } else if (command.equals("x")) {
-            inputs.add("x");
+        switch (command) {
+            case "f" -> filterInput();
+            case "s" -> sortInput();
+            case "a" -> inputs.add("a");
+            case "x" -> inputs.add("x");
         }
 
         return inputs;
@@ -93,10 +90,10 @@ public class UserInterface {
         System.out.println("Mulige inputs ->");
         System.out.println("-----");
         System.out.println("""
-                alder
                 fornavn
                 mellemnavn
                 efternavn
+                alder
                 hus
                 """);
     }

@@ -2,13 +2,12 @@ package edu.hogwarts.application;
 
 
 
-import edu.generic.Person;
 import edu.hogwarts.data.HogwartsStudent;
-import edu.hogwarts.data.SortAndFilter;
+import edu.hogwarts.data.Filterable;
 
 import java.util.*;
 
-public class StudentController implements SortAndFilter<HogwartsStudent> {
+public class StudentController implements Filterable<HogwartsStudent> {
 
 
     private Map<Integer, HogwartsStudent> students;
@@ -40,45 +39,10 @@ public class StudentController implements SortAndFilter<HogwartsStudent> {
         students.remove(id);
     }
 
-
-    @Override
-    public List<HogwartsStudent> sort(String sortBy, String sortDir) {
-        List<HogwartsStudent> sortedStudents = new ArrayList<>();
-
-        if (sortBy.equalsIgnoreCase("fornavn")){
-            sortedStudents = students.values().stream()
-                    .sorted(Comparator.comparing(student -> student.getFirstName()))
-                    .toList();
-        } else if (sortBy.equalsIgnoreCase("mellemnavn")) {
-            sortedStudents = students.values().stream()
-                    .sorted(Comparator.comparing(student -> student.getMiddleName()))
-                    .toList();
-        } else if (sortBy.equalsIgnoreCase("efternavn")) {
-            sortedStudents = students.values().stream()
-                    .sorted(Comparator.comparing(student -> student.getLastName()))
-                    .toList();
-        } else if (sortBy.equalsIgnoreCase("alder")) {
-            sortedStudents = students.values().stream()
-                    .sorted(Comparator.comparingInt(student -> student.getAge()))
-                    .toList();
-        } else if (sortBy.equalsIgnoreCase("hus")) {
-            sortedStudents = students.values().stream()
-                    .sorted(Comparator.comparing(student -> student.getHouse().toString()))
-                    .toList();
-        }
-
-
-        if (sortDir.equalsIgnoreCase("d")) {
-            sortedStudents = reverseList(sortedStudents);
-        }
-
-        return sortedStudents;
-    }
-
     @Override
     public List<HogwartsStudent> filter(String filterBy) {
         if (filterBy.equals("teacher")) {
-            return null;
+            return new ArrayList<>();
         }
 
         if (filterBy.equals("student")) {
@@ -90,17 +54,5 @@ public class StudentController implements SortAndFilter<HogwartsStudent> {
                 .filter(student -> student.getHouse().toString().toLowerCase().equals(filterBy))
                 .toList();
     }
-
-
-    public List<HogwartsStudent> reverseList(List<HogwartsStudent> list) {
-        List<HogwartsStudent> reversedStudents = new ArrayList<>();
-
-        for (int i = list.size()-1; i >= 0; i--) {
-            reversedStudents.add(list.get(i));
-        }
-
-        return reversedStudents;
-    }
-
 
 }
