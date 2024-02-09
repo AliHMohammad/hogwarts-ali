@@ -79,22 +79,21 @@ public class UserInterface {
     public List<HogwartsPerson> sort(List<HogwartsPerson> persons, String sortBy, String sortDir) {
         List<HogwartsPerson> sortedHogwartsPersons = new ArrayList<>();
 
-
         if (sortBy.equalsIgnoreCase("fornavn")) {
             sortedHogwartsPersons = persons.stream()
-                    .sorted(Comparator.comparing(person -> person.getFirstName()))
+                    .sorted(Comparator.comparing(HogwartsPerson::getFirstName))
                     .toList();
         } else if (sortBy.equalsIgnoreCase("mellemnavn")) {
             sortedHogwartsPersons = persons.stream()
-                    .sorted(Comparator.comparing(person -> person.getMiddleName()))
+                    .sorted(Comparator.comparing(HogwartsPerson::getMiddleName))
                     .toList();
         } else if (sortBy.equalsIgnoreCase("efternavn")) {
             sortedHogwartsPersons = persons.stream()
-                    .sorted(Comparator.comparing(person -> person.getLastName()))
+                    .sorted(Comparator.comparing(HogwartsPerson::getLastName))
                     .toList();
         } else if (sortBy.equalsIgnoreCase("alder")) {
             sortedHogwartsPersons = persons.stream()
-                    .sorted(Comparator.comparingInt(person -> person.getAge()))
+                    .sorted(Comparator.comparing(HogwartsPerson::getAge))
                     .toList();
         } else if (sortBy.equalsIgnoreCase("hus")) {
             sortedHogwartsPersons = persons.stream()
