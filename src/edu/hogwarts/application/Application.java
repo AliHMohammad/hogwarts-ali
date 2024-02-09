@@ -15,9 +15,9 @@ public class Application {
     private final TeacherController teacherController;
 
     public Application() {
-        userInterface = new UserInterface();
         studentController = new StudentController();
         teacherController = new TeacherController();
+        userInterface = new UserInterface();
     }
 
     public static void main(String[] args) {
@@ -116,17 +116,8 @@ public class Application {
     }
 
     public void createTestData() {
-        InitApp testData = new InitApp();
-        List<HogwartsStudent> studentsArr = testData.createStudentsArr();
-        List<HogwartsTeacher> teachersArr = testData.createTeachersArr();
-
-        for (HogwartsTeacher teacher : teachersArr) {
-            teacherController.createTeacher(teacher);
-        }
-
-        for (HogwartsStudent student : studentsArr) {
-            studentController.createStudent(student);
-        }
+        InitApp testData = new InitApp(studentController, teacherController);
+        testData.createData();
     }
 
 }

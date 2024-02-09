@@ -12,13 +12,22 @@ import java.util.List;
 public class InitApp {
 
     private List<House> houses;
+    private StudentController studentController;
+    private TeacherController teacherController;
 
-    public InitApp() {
+    public InitApp(StudentController studentController, TeacherController teacherController) {
+        this.studentController = studentController;
+        this.teacherController = teacherController;
         houses = new ArrayList<>();
-        initiateHouses();
     }
 
-    public ArrayList<HogwartsStudent> createStudentsArr() {
+    public void createData() {
+        initiateHouses();
+        createStudentsArr();
+        createTeachersArr();
+    }
+
+    public void createStudentsArr() {
         ArrayList<HogwartsStudent> students = new ArrayList<>();
 
         //Gryffindor
@@ -42,10 +51,12 @@ public class InitApp {
         students.add(new HogwartsStudent("Draco Malfoy", "05-06-1980", 1991, 1998, true, houses.get(0), true));
         students.add(new HogwartsStudent("Gregory Goyle", "10-09-1980", 1991, 1998, true, houses.get(0), false));
 
-        return students;
+        for (HogwartsStudent student : students) {
+            studentController.createStudent(student);
+        }
     }
 
-    public ArrayList<HogwartsTeacher> createTeachersArr() {
+    public void createTeachersArr() {
         ArrayList<HogwartsTeacher> teachers = new ArrayList<>();
 
         teachers.add(new HogwartsTeacher("Albus Percival Wulfric Brian Dumbledore", "16-8-1881", EmploymentType.HEADMASTER, LocalDate.now(), null, houses.get(1), false));
@@ -55,7 +66,9 @@ public class InitApp {
         teachers.add(new HogwartsTeacher("Severus Snape", "09-01-1960", EmploymentType.HEAD_OF_SLYTHERIN_HOUSE, LocalDate.now(), null, houses.get(0), true));
         teachers.add(new HogwartsTeacher("Horace Slughorn", "28-04-1913", EmploymentType.TEACHER, LocalDate.of(2000, 12, 12), null, houses.get(0), false));
 
-        return teachers;
+        for (HogwartsTeacher teacher : teachers) {
+            teacherController.createTeacher(teacher);
+        }
     }
 
     private void initiateHouses() {
